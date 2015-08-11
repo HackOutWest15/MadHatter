@@ -17,18 +17,26 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider, $sceDelegateProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'searchController'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/link/:uri', {
+        templateUrl: 'views/viewLink.html',
+        controller: 'viewLinkController'
       })
       .otherwise({
         redirectTo: '/'
       });
+
+      $sceDelegateProvider.resourceUrlWhitelist([
+          'self',
+          'https://p.scdn.co/mp3-preview/**'
+        ]);
+
+      $httpProvider.defaults.useXDomain = true;
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
   });
