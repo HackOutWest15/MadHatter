@@ -59,12 +59,6 @@ body {
   margin-top: 28px;
 }
 
-.track:hover {
-  border: 2px solid black;
-  padding: 5px;
-  width: 20%;
-}
-
 .selected {
   color: white;
   background-color: black;
