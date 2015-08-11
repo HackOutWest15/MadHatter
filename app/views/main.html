@@ -2,7 +2,7 @@
 	<div class="top background">
 		<div class="container">
 			<header>
-				<h1>Wosh</h1>
+				<h1>-Wosh-</h1>
 				<h2>Re-experience your favorite moments and conserts from #WOWgbg and share them with your dearests</h2>
 			</header>
 		</div>
@@ -28,7 +28,7 @@
 				<p>After that you are free to share your slideshow with friends or watch the most recently created slideshows from other users</p></div>
 			</div>		
 		</div>
-		<div id="show" class="slideshow background">
+		<div  class="slideshow background">
 			<div class="container" data-ng-hide="choosenTrack">
 				<p class="slideText">Choose a song please</p>
 				<input type="text" data-ng-model="query" data-ng-blur="search()"></input>
@@ -37,7 +37,8 @@
 				</div>
 			</div>
 
-			<div class="container" data-ng-show="choosenTrack">
+			<div class="container" data-ng-show="choosenTrack" id="show">
+				<h3>Your Wosh</h3>
 				<img src="{{imgSrc}}" data-ng-cloak></img>
 				<audio id="theTrack" src="{{choosenTrack}}" data-ng-cloak></audio>
 			</div>
