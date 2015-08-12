@@ -93,6 +93,7 @@ angular.module('madHatterApp')
 
 	$scope.searchTags = function () {
 		if ($scope.tag) {
+			$scope.tag = $scope.tag.replace('#', '');
 			var promise = getContentService.getTags($scope.tag);
 
 			var successCallback = function (result) {

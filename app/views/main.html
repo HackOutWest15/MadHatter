@@ -38,8 +38,8 @@
       </div>
 
       <div class="container" data-ng-show="choosenTrack" data-ng-hide="tagChoosen">
-        <p class="slideText">Choose a tag please</p>
-        <input type="text" data-ng-model="tag" data-ng-blur="searchTags()" data-ng-keypress="pressedEnter($event, 'tags')"></input>
+        <p class="slideText">Enter a tag please</p>
+        <input ng-init="tag='#'" value="#" type="text" data-ng-model="tag" data-ng-blur="searchTags()" data-ng-keypress="pressedEnter($event, 'tags')"></input>
         <div data-ng-repeat="tag in result.data">
           <p class="track" data-ng-click="tagChoosen(tag)">{{tag.name}}</p>
         </div>
