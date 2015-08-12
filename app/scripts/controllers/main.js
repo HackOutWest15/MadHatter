@@ -11,6 +11,7 @@ angular.module('madHatterApp')
   .controller('searchController', ['$scope', 'getContentService', '$log', '$timeout', function ($scope, getContentService, $log, $timeout) {
 	$scope.query = null;
 	$scope.images = [];
+	$scope.linkToShare = false;
 	var copyImages = [];
 	var i = 0;
 	
@@ -24,6 +25,9 @@ angular.module('madHatterApp')
 			$scope.imgSrc = $scope.images[pos].standard_resolution.url;
 			i++;
 			$timeout(showSlideShow, 5000);
+		} else {
+			$scope.url = 'localhost:9000/#/link/'+$scope.choosenTrack.uri;
+			$scope.linkToShare = true;
 		}
 	};
 
@@ -72,7 +76,7 @@ angular.module('madHatterApp')
 	};
 
 	$scope.trackChoosen = function (track) {
-		$scope.choosenTrack = track.preview_url;
+		$scope.choosenTrack = track;
 		fetchImages();
 	};
   }]);

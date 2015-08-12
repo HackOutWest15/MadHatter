@@ -1,46 +1,51 @@
 <div class="center">
-	<div class="top background">
-		<div class="container">
-			<header>
-				<h1>-Wosh-</h1>
-				<h2>Re-experience your favorite moments and conserts from #WOWgbg and share them with your dearests</h2>
-			</header>
-		</div>
-	</div>
-	<div class="steps background">
-		<div class="container">
-			<div class="step">
-				<div class="underline">
-					<h3>1</h3>
-				</div>
-				<p>Firstly you need to choose a song</p>
-			</div>
-			<div class="step">
-				<div class="underline">
-					<h3>2</h3>
-				</div>
-				<p>After that you choose addtional hashtags if preferred such specific artists, e.g #Petshopboys</p>
-			</div>
-			<div class="step">
-				<div class="underline">
-					<h3>3</h3>
-				</div>
-				<p>After that you are free to share your slideshow with friends or watch the most recently created slideshows from other users</p></div>
-			</div>		
-		</div>
-		<div  class="slideshow background">
-			<div class="container" data-ng-hide="choosenTrack">
-				<p class="slideText">Choose a song please</p>
-				<input type="text" data-ng-model="query" data-ng-blur="search()"></input>
-				<div data-ng-repeat="track in result.tracks.items">
-					<p class="track" data-ng-click="trackChoosen(track)" data-ng-class="{selected: track.name == choosenTrack.name }">{{track.name}} - {{track.artists[0].name}}</p>
-				</div>
-			</div>
+  <div class="top background">
+    <div class="container">
+      <header>
+        <h1>-Wosh-</h1>
+        <h2>Re-experience your favorite moments and conserts from #WOWgbg and share them with your dearests</h2>
+      </header>
+    </div>
+  </div>
+  <div class="steps background">
+    <div class="container">
+      <div class="step">
+        <div class="underline">
+          <h3>1</h3>
+        </div>
+        <p>Firstly you need to choose a song</p>
+      </div>
+      <div class="step">
+        <div class="underline">
+          <h3>2</h3>
+        </div>
+        <p>After that you choose addtional hashtags if preferred such specific artists, e.g #Petshopboys</p>
+      </div>
+      <div class="step">
+        <div class="underline">
+          <h3>3</h3>
+        </div>
+        <p>After that you are free to share your slideshow with friends or watch the most recently created slideshows from other users</p></div>
+      </div>    
+    </div>
+    <div class="slideshow background">
+      <div class="container" data-ng-hide="choosenTrack">
+        <p class="slideText">Choose a song please</p>
+        <input type="text" data-ng-model="query" data-ng-blur="search()"></input>
+        <div data-ng-repeat="track in result.tracks.items">
+          <p class="track" data-ng-click="trackChoosen(track)" data-ng-class="{selected: track.name == choosenTrack.name }">{{track.name}} - {{track.artists[0].name}}</p>
+        </div>
+      </div>
 
-			<div class="container" data-ng-show="choosenTrack" id="show">
-				<h3>Your Wosh</h3>
-				<img src="{{imgSrc}}" data-ng-cloak></img>
-				<audio id="theTrack" src="{{choosenTrack}}" data-ng-cloak></audio>
-			</div>
-		</div>
-	</div>
+      <div class="container" data-ng-show="choosenTrack && !linkToShare" id="show">
+        <h3>Your Wosh</h3>
+        <img src="{{imgSrc}}" data-ng-cloak></img>
+        <audio id="theTrack" src="{{choosenTrack.preview_url}}" data-ng-cloak></audio>
+      </div>
+
+      <div class="container" data-ng-show="linkToShare">
+        <p class="slideText">Link to share your slideshow</p>
+        <p data-ng-bind="url"></p>
+      </div>
+    </div>
+  </div>
