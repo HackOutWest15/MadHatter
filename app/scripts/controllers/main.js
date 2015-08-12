@@ -18,20 +18,20 @@ angular.module('madHatterApp')
 	var i = 0;
 	
 	var showSlideShow = function () {
+		$scope.startSlideshow = true;
+
 		$('body, html').animate({
 			scrollTop: $('#show').offset().top
 		}, 500);
-
-		$scope.startSlideshow = true;
 		
-		if(i < 6) {
+		if(i < 7) {
 			var pos = Math.floor((Math.random() * 20));
 			if (i === 0) {
 				$('#img')
 					.fadeIn(400, function() {
 						$('#img').attr('src',$scope.images[pos].standard_resolution.url);
 					});
-			} else if (i === 5) {
+			} else if (i === 6) {
 				$timeout(function () {
 					$('#theTrack').animate({volume: 0.0}, 1000);
 				}, 4000);
@@ -43,7 +43,7 @@ angular.module('madHatterApp')
 					.fadeIn(400);
 			}
 			i++;
-			$timeout(showSlideShow, 5000);
+			$timeout(showSlideShow, 4000);
 		} else {
 			$scope.url = 'localhost:9000/#/link/' + $scope.tagChoosen.name + '/' + $scope.choosenTrack.uri;
 			$scope.linkToShare = true;
@@ -84,6 +84,10 @@ angular.module('madHatterApp')
 			var successCallback = function (result) {
 				$log.debug(result);
 				$scope.result = result;
+
+				$('body, html').animate({
+					scrollTop: $('.slideshow').offset().top
+				}, 500);
 			};
 
 			var errorCallback = function (error) {
@@ -114,6 +118,10 @@ angular.module('madHatterApp')
 			var successCallback = function (result) {
 				$log.debug(result);
 				$scope.result = result;
+
+				$('body, html').animate({
+					scrollTop: $('.slideshow').offset().top
+				}, 500);
 			};
 
 			var errorCallback = function (error) {

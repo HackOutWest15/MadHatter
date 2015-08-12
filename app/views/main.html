@@ -45,10 +45,12 @@
         </div>
       </div>
 
-      <div class="container" data-ng-show="!linkToShare && startSlideshow" id="show">
-        <h3>Your Wosh</h3>
-        <img id="img" src="{{imgSrc}}" data-ng-cloak></img>
-        <audio id="theTrack" src="{{choosenTrack.preview_url}}" data-ng-cloak></audio>
+      <div class="container" id="show">
+        <div data-ng-show="!linkToShare && startSlideshow">
+          <h3>Your Wosh</h3>
+          <img id="img" src="{{imgSrc}}" data-ng-cloak></img>
+          <audio id="theTrack" src="{{choosenTrack.preview_url}}" data-ng-cloak></audio>
+        </div>
       </div>
 
       <div class="container" data-ng-show="linkToShare">
