@@ -14,7 +14,7 @@ h2 {
 	font-style: italic;
 	margin-top: -1%;
 	margin-bottom: 1%;
-	font-size: 2em;
+	font-size: 1.8em;
 	font-family: 'Raleway', sans-serif;
 }
 
@@ -23,6 +23,7 @@ h3 {
 	font-family: 'Bitter', serif;
 	font-size: 2em;
 	text-align: center;
+	text-transform: uppercase;
 
 }
 
@@ -104,9 +105,27 @@ input[type=text]:focus {
 	outline: 0;}
 
 .track:hover {
-  padding: 5px;
+
   text-decoration: underline;
   color: #30e6ff;
+}
+
+.current-step {
+	color: #ff44ff;
+	 
+
+}
+
+.current-step-underline {
+	border-color: #ff44ff;
+}
+
+.completed-step {
+	color:grey;
+}
+
+.completed-step-underline {
+	border-color: grey;
 }
 
 .track {

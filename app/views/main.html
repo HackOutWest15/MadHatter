@@ -3,29 +3,29 @@
     <div class="container">
       <header>
         <h1>-Wosh-</h1>
-        <h2>Re-experience your favorite moments and conserts from #WOWgbg and share them with your dearests</h2>
+        <h2>Re-experience your favorite moments and conserts from #WOWgbg through your own customized slideshow</h2>	
       </header>
     </div>
   </div>
   <div class="steps background">
     <div class="container">
       <div class="step">
-        <div class="underline">
-          <h3>1</h3>
+        <div class="underline" data-ng-class="{'current-step-underline': query, 'completed-step-underline': choosenTrack && query}">
+          <h3 data-ng-class="{'current-step': query, 'completed-step': choosenTrack}">1</h3>
         </div>
-        <p>Firstly you need to choose a song</p>
+        <p>Firstly you need to choose a song to express the feeling of your slideshow.</p>
       </div>
       <div class="step">
-        <div class="underline">
-          <h3>2</h3>
+        <div class="underline" data-ng-class="{'current-step-underline': choosenTrack, 'completed-step-underline': linkToShare}">
+          <h3 data-ng-class="{'current-step': choosenTrack, 'completed-step': linkToShare}">2</h3>
         </div>
-        <p>After that you choose addtional hashtags if preferred such specific artists, e.g #Petshopboys</p>
+        <p>After that you choose a hashtag such as a specific artist or just #WOWgbg and the right images will be fetched from Instagram</p>
       </div>
       <div class="step">
-        <div class="underline">
-          <h3>3</h3>
+        <div class="underline" data-ng-class="{'current-step-underline': linkToShare}">
+          <h3 data-ng-class="{'current-step': linkToShare}">3</h3>
         </div>
-        <p>After that you are free to share your slideshow with friends or watch the most recently created slideshows from other users</p></div>
+        <p>Then you are free to share your slideshow with friends or watch the most recently created slideshows from other users</p></div>
       </div>    
     </div>
     <div class="slideshow background">
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="container" data-ng-if="choosenTrack" data-ng-hide="tagChoosen">
+      <div class="container" data-ng-show="choosenTrack" data-ng-hide="tagChoosen">
         <p class="slideText">Choose a tag please</p>
         <input type="text" data-ng-model="tag" data-ng-blur="searchTags()" data-ng-keypress="pressedEnter($event)"></input>
         <div data-ng-repeat="tag in result.data">
@@ -45,7 +45,7 @@
         </div>
       </div>
 
-      <div class="container" data-ng-if="!linkToShare && startSlideshow" id="show">
+      <div class="container" data-ng-show="!linkToShare && startSlideshow" id="show">
         <h3>Your Wosh</h3>
         <img src="{{imgSrc}}" data-ng-cloak></img>
         <audio id="theTrack" src="{{choosenTrack.preview_url}}" data-ng-cloak></audio>
