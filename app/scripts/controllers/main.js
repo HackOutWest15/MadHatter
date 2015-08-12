@@ -12,10 +12,14 @@ angular.module('madHatterApp')
 	$scope.query = null;
 	$scope.images = [];
 	$scope.linkToShare = false;
+	$scope.tag = null;
+	$scope.startSlideshow = false;
 	var copyImages = [];
 	var i = 0;
 	
 	var showSlideShow = function () {
+		$scope.startSlideshow = true;
+
 		$('body, html').animate({
 			scrollTop: $('#show').offset().top
 		}, 500);
@@ -36,8 +40,8 @@ angular.module('madHatterApp')
 		elem.play();
 	};
 
-	var fetchImages = function () {
-		var promise = getContentService.getImages();
+	var fetchImages = function (tag) {
+		var promise = getContentService.getImages(tag);
 			
 		var successCallback = function (result) {
 			$log.debug(result);
@@ -77,12 +81,33 @@ angular.module('madHatterApp')
 
 	$scope.trackChoosen = function (track) {
 		$scope.choosenTrack = track;
-		fetchImages();
 	};
 
 	$scope.pressedEnter = function ($event) {
 		if ($event.keyCode === 13) {
 			$scope.search();
 		}
+	};
+
+	$scope.searchTags = function () {
+		if ($scope.tag) {
+			var promise = getContentService.getTags($scope.tag);
+
+			var successCallback = function (result) {
+				$log.debug(result);
+				$scope.result = result;
+			};
+
+			var errorCallback = function (error) {
+				$log.debug(error);
+			};
+
+			promise.then(successCallback, errorCallback);	
+		}
+	};
+
+	$scope.tagChoosen = function (tag) {
+		$scope.tagChoosen = tag;
+		fetchImages(tag.name);
 	};
   }]);

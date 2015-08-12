@@ -37,7 +37,15 @@
         </div>
       </div>
 
-      <div class="container" data-ng-show="choosenTrack && !linkToShare" id="show">
+      <div class="container" data-ng-if="choosenTrack" data-ng-hide="tagChoosen">
+        <p class="slideText">Choose a tag please</p>
+        <input type="text" data-ng-model="tag" data-ng-blur="searchTags()" data-ng-keypress="pressedEnter($event)"></input>
+        <div data-ng-repeat="tag in result.data">
+          <p class="track" data-ng-click="tagChoosen(tag)">{{tag.name}}</p>
+        </div>
+      </div>
+
+      <div class="container" data-ng-if="!linkToShare && startSlideshow" id="show">
         <h3>Your Wosh</h3>
         <img src="{{imgSrc}}" data-ng-cloak></img>
         <audio id="theTrack" src="{{choosenTrack.preview_url}}" data-ng-cloak></audio>
