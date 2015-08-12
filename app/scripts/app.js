@@ -23,7 +23,7 @@ angular
         templateUrl: 'views/main.html',
         controller: 'searchController'
       })
-      .when('/link/:uri', {
+      .when('/link/:tag/:uri', {
         templateUrl: 'views/viewLink.html',
         controller: 'viewLinkController'
       })

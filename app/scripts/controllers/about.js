@@ -30,7 +30,7 @@ angular.module('madHatterApp')
 	};
 
 	var fetchImages = function () {
-		var promise = getContentService.getImages();
+		var promise = getContentService.getImages($routeParams.tag);
 			
 		var successCallback = function (result) {
 			$log.debug(result);

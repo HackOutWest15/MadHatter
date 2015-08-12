@@ -3,7 +3,7 @@
     <div class="container">
       <header>
         <h1>-Wosh-</h1>
-        <h2>Re-experience your favorite moments and conserts from #WOWgbg through your own customized slideshow</h2>	
+        <h2>Re-experience your favorite moments and conserts from #WOWgbg through your own customized slideshow</h2>  
       </header>
     </div>
   </div>
@@ -31,7 +31,7 @@
     <div class="slideshow background">
       <div class="container" data-ng-hide="choosenTrack">
         <p class="slideText">Choose a song please</p>
-        <input type="text" data-ng-model="query" data-ng-blur="search()" data-ng-keypress="pressedEnter($event)"></input>
+        <input type="text" data-ng-model="query" data-ng-blur="search()" data-ng-keypress="pressedEnter($event, 'tracks')"></input>
         <div data-ng-repeat="track in result.tracks.items">
           <p class="track" data-ng-click="trackChoosen(track)" data-ng-class="{selected: track.name == choosenTrack.name }">{{track.name}} - {{track.artists[0].name}}</p>
         </div>
@@ -39,7 +39,7 @@
 
       <div class="container" data-ng-show="choosenTrack" data-ng-hide="tagChoosen">
         <p class="slideText">Choose a tag please</p>
-        <input type="text" data-ng-model="tag" data-ng-blur="searchTags()" data-ng-keypress="pressedEnter($event)"></input>
+        <input type="text" data-ng-model="tag" data-ng-blur="searchTags()" data-ng-keypress="pressedEnter($event, 'tags')"></input>
         <div data-ng-repeat="tag in result.data">
           <p class="track" data-ng-click="tagChoosen(tag)">{{tag.name}}</p>
         </div>

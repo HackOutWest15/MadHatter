@@ -30,7 +30,7 @@ angular.module('madHatterApp')
 			i++;
 			$timeout(showSlideShow, 5000);
 		} else {
-			$scope.url = 'localhost:9000/#/link/'+$scope.choosenTrack.uri;
+			$scope.url = 'localhost:9000/#/link/' + $scope.tagChoosen.name + '/' + $scope.choosenTrack.uri;
 			$scope.linkToShare = true;
 		}
 	};
@@ -83,9 +83,11 @@ angular.module('madHatterApp')
 		$scope.choosenTrack = track;
 	};
 
-	$scope.pressedEnter = function ($event) {
-		if ($event.keyCode === 13) {
+	$scope.pressedEnter = function ($event, searchFunction) {
+		if ($event.keyCode === 13 && searchFunction === 'tracks') {
 			$scope.search();
+		} else if ($event.keyCode === 13 && searchFunction === 'tags') {
+			$scope.searchTags();
 		}
 	};
 
