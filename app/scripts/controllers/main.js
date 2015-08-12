@@ -18,15 +18,30 @@ angular.module('madHatterApp')
 	var i = 0;
 	
 	var showSlideShow = function () {
-		$scope.startSlideshow = true;
-
 		$('body, html').animate({
 			scrollTop: $('#show').offset().top
 		}, 500);
 
+		$scope.startSlideshow = true;
+		
 		if(i < 6) {
 			var pos = Math.floor((Math.random() * 20));
-			$scope.imgSrc = $scope.images[pos].standard_resolution.url;
+			if (i === 0) {
+				$('#img')
+					.fadeIn(400, function() {
+						$('#img').attr('src',$scope.images[pos].standard_resolution.url);
+					});
+			} else if (i === 5) {
+				$timeout(function () {
+					$('#theTrack').animate({volume: 0.0}, 1000);
+				}, 4000);
+			} else {
+				$('#img')
+					.fadeOut(400, function() {
+						$('#img').attr('src',$scope.images[pos].standard_resolution.url);
+					})
+					.fadeIn(400);
+			}
 			i++;
 			$timeout(showSlideShow, 5000);
 		} else {
