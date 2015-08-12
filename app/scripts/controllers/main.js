@@ -31,16 +31,17 @@ angular.module('madHatterApp')
 					.fadeIn(400, function() {
 						$('#img').attr('src',$scope.images[pos].standard_resolution.url);
 					});
-			} else if (i === 6) {
-				$timeout(function () {
-					$('#theTrack').animate({volume: 0.0}, 1000);
-				}, 4000);
 			} else {
 				$('#img')
 					.fadeOut(400, function() {
 						$('#img').attr('src',$scope.images[pos].standard_resolution.url);
 					})
 					.fadeIn(400);
+				if (i === 6) {
+					$timeout(function () {
+						$('#theTrack').animate({volume: 0.0}, 1000);
+					}, 4000);
+				}
 			}
 			i++;
 			$timeout(showSlideShow, 4000);
