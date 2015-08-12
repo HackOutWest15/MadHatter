@@ -56,6 +56,6 @@ angular.module('madHatterApp')
 			});
 
 			return deferred.promise;
-		},
+		}
 	};
   }]);
