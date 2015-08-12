@@ -79,4 +79,10 @@ angular.module('madHatterApp')
 		$scope.choosenTrack = track;
 		fetchImages();
 	};
+
+	$scope.pressedEnter = function ($event) {
+		if ($event.keyCode === 13) {
+			$scope.search();
+		}
+	};
   }]);

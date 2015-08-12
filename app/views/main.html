@@ -31,7 +31,7 @@
     <div class="slideshow background">
       <div class="container" data-ng-hide="choosenTrack">
         <p class="slideText">Choose a song please</p>
-        <input type="text" data-ng-model="query" data-ng-blur="search()"></input>
+        <input type="text" data-ng-model="query" data-ng-blur="search()" data-ng-keypress="pressedEnter($event)"></input>
         <div data-ng-repeat="track in result.tracks.items">
           <p class="track" data-ng-click="trackChoosen(track)" data-ng-class="{selected: track.name == choosenTrack.name }">{{track.name}} - {{track.artists[0].name}}</p>
         </div>
